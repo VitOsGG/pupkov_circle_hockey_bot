@@ -8,10 +8,10 @@ from points import points_less_six_khl, points_more_six_khl, points_less_six_nhl
 
 def image_khl(teams, results):
     # Формируем ссылку на шрифт
-    font_path = os.path.join('files_for_pict', 'font', name_font_path)
+    font_path = os.path.join('data', 'font', name_font_path)
 
     # Формируем ссылку на фон
-    template_path_khl = os.path.join('files_for_pict', 'background', name_template_khl)
+    template_path_khl = os.path.join('data', 'background', name_template_khl)
 
     # Открыть шаблон изображения
     template_image_khl = Image.open(template_path_khl)
@@ -36,7 +36,7 @@ def image_khl(teams, results):
             raise ValueError("Логотип для команды не найден")
         else:
             # Определяем путь к изображению относительно текущего файла
-            logo_path = os.path.join('files_for_pict', 'logo_khl', name_logo_path)
+            logo_path = os.path.join('data', 'logo_khl', name_logo_path)
             if logo_path:
                 logo_image = Image.open(logo_path)
                 logo_image.thumbnail(logo_size)
@@ -93,10 +93,10 @@ def image_khl(teams, results):
 
 def image_nhl(teams, results):
     # Формируем ссылку на шрифт
-    font_path = os.path.join('files_for_pict', 'font', name_font_path)
+    font_path = os.path.join('data', 'font', name_font_path)
 
     # Формируем ссылку на фон
-    template_path_nhl = os.path.join('files_for_pict', 'background', name_template_nhl)
+    template_path_nhl = os.path.join('data', 'background', name_template_nhl)
 
     # Открыть шаблон изображения
     template_image_nhl = Image.open(template_path_nhl)
@@ -121,7 +121,7 @@ def image_nhl(teams, results):
             raise ValueError("Логотип для команды не найден")
         else:
             # Определяем путь к изображению относительно текущего файла
-            logo_path = os.path.join('files_for_pict', 'logo_nhl', name_logo_path)
+            logo_path = os.path.join('data', 'logo_nhl', name_logo_path)
             if logo_path:
                 logo_image = Image.open(logo_path)
                 logo_image.thumbnail(logo_size)
