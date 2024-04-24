@@ -10,12 +10,9 @@ from aiogram.dispatcher.filters import Text
 # from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 import random
 import os
-from dotenv import load_dotenv
 
-# Загрузка переменных окружения из файла .env
-load_dotenv()
 
-CHANNEL_ID = os.getenv("CHANNEL_ID")
+CHANNEL_ID = os.environ.get("CHANNEL_ID")
 
 
 async def command_start(message: types.Message):
