@@ -8,11 +8,9 @@ load_dotenv()
 
 # Использование переменной окружения TOKEN
 TOKEN = os.getenv("TOKEN")
-print(TOKEN)
 
 # Инициализация хранилища состояний
 storage = MemoryStorage()
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher(bot, storage=storage)
-CHANNEL_ID = os.getenv("CHANNEL_ID")

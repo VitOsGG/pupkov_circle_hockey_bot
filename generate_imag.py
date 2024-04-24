@@ -81,14 +81,17 @@ def image_khl(teams, results):
 
         result_index += 1  # Увеличение индекса для списка result_points
 
+    # Путь для финальной картинки
+    results_path = os.path.join('data', 'results', 'game_result_khl.png')
+
     print("Результаты КХЛ успешно сформированны")
-    template_image_khl.save("game_result_khl.png")
+    template_image_khl.save(results_path)
 
     # Получаем абсолютный путь к файлу изображения
-    image_path = os.path.abspath("game_result_khl.png")
+    # image_path = os.path.abspath("game_result_khl.png")
 
     # Возвращаем относительный путь к файлу изображения относительно директории скрипта
-    return os.path.relpath(image_path, os.getcwd())
+    return results_path
 
 
 def image_nhl(teams, results):
@@ -167,12 +170,15 @@ def image_nhl(teams, results):
 
         result_index += 1  # Увеличение индекса для списка result_points
 
-    # Сохранение результата
+    # Путь для финальной картинки
+    results_path = os.path.join('data', 'results', 'game_result_nhl.png')
+
+    # Сохранение картинки
     print("Результаты НХЛ успешно сформированны")
-    template_image_nhl.save("game_result_nhl.png")
+    template_image_nhl.save(results_path)
 
     # Получаем абсолютный путь к файлу изображения
-    image_path = os.path.abspath("game_result_nhl.png")
+    # image_path = os.path.abspath("game_result_nhl.png")
 
     # Возвращаем относительный путь к файлу изображения относительно директории скрипта
-    return os.path.relpath(image_path, os.getcwd())
+    return results_path

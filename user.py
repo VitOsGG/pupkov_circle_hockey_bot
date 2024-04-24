@@ -16,7 +16,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
 CHANNEL_ID = os.getenv("CHANNEL_ID")
-print(CHANNEL_ID)
 
 
 async def command_start(message: types.Message):
