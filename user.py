@@ -25,17 +25,19 @@ load_dotenv()
 CHANNEL_ID = os.getenv('CHANNEL_ID')
 
 # Ваш user ID
-ALLOWED_USER_ID = os.getenv('ALLOWED_USER_ID') # замените на ваш user ID
+ALLOWED_USER_ID = os.getenv('ALLOWED_USER_ID')
+
 
 # Проверка доступа к боту
 def restricted(handler):
     async def wrapper(message: types.Message):
-        user_id = message.from_user.id
+        user_id = str(message.from_user.id)
         if user_id != ALLOWED_USER_ID:
-            await message.reply("Это приватный чат")
-            logging.warning(f"Попытка доступа в боту от пользователя: {user_id}.")
+            await message.reply("Это приватный бот")
+            logging.warning(f"Попытка доступа к боту от пользователя: {user_id}.")
             return
-        return await handler(message)
+        else:
+            return await handler(message)
     return wrapper
 
 # Обработчик команды /start
