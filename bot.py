@@ -1,10 +1,12 @@
 from aiogram import Bot, Dispatcher
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 import os
+from dotenv import load_dotenv
 
+load_dotenv()
 
 # Использование переменной окружения TOKEN
-TOKEN = os.environ.get("TOKEN")
+TOKEN = os.getenv('TOKEN')
 
 # Инициализация хранилища состояний
 storage = MemoryStorage()
