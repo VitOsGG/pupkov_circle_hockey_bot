@@ -8,15 +8,38 @@ from aiogram.dispatcher.filters.state import StatesGroup, State
 from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters import Text
 # from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from aiogram.contrib.middlewares.logging import LoggingMiddleware
 import random
 import os
 from dotenv import load_dotenv
+import logging
 
+# Инициализация логгера
+logging.basicConfig(level=logging.INFO)
+dp.middleware.setup(LoggingMiddleware())
+
+# Объект для извлечения переменных
 load_dotenv()
 
+# Айди чата куда необходимо отправлять картинки
 CHANNEL_ID = os.getenv('CHANNEL_ID')
 
+# Ваш user ID
+ALLOWED_USER_ID = os.getenv('ALLOWED_USER_ID') # замените на ваш user ID
 
+# Проверка доступа к боту
+def restricted(handler):
+    async def wrapper(message: types.Message):
+        user_id = message.from_user.id
+        if user_id != ALLOWED_USER_ID:
+            await message.reply("Это приватный чат")
+            logging.warning(f"Попытка доступа в боту от пользователя: {user_id}.")
+            return
+        return await handler(message)
+    return wrapper
+
+# Обработчик команды /start
+@restricted
 async def command_start(message: types.Message):
     try:
         await bot.send_message(message.from_user.id, "Привет!\nНадо выбрать лигу!", reply_markup=kb_user)
